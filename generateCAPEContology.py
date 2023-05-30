@@ -16,7 +16,7 @@ LS = "{http://capec.mitre.org/capec-3}"
 xml_fn = "data/capec.xml"
 
 def code(s):
-        return s.replace("\\", "\\\\").replace("\"", "\\\"")
+        return s.replace("\\", "\\\\").replace('"', '\\"')
 
 def flat(s):
         return " ".join([e.strip() for e in s.strip().splitlines()])
@@ -57,8 +57,7 @@ class AttackPattern:
                         
         def addDataFactFromAttribute(self, att):
                 if att in self.element.attrib:
-                        value = flat(self.element.attrib[att])
-                        value = code(value)
+                        value = code(flat(self.element.attrib[att]))
                         if att not in self.data_facts: self.data_facts[att] = dict()
                         vd = self.data_facts[att]
                         ad = dict()
@@ -74,9 +73,7 @@ class AttackPattern:
                         vd = fd[value]
                         if aName not in vd: vd[aName] = set()
                         al = vd[aName]
-                        if e.text:
-                                aValue = flat(e.text)
-                                al.add(code(aValue))
+                        if e.text: al.add(code(flat(e.text)))
                         vd[aName] = al
                         fd[value] = vd
                         self.data_facts[el] = fd
@@ -130,7 +127,7 @@ class AttackPattern:
                         if name not in self.annotations: self.annotations[name] = set()
                         l = self.annotations[name]
                         value = "External reference ID: " + e.attrib["External_Reference_ID"]
-                        if "Section" in e.attrib: value += "\nSection: " + e.attrib["Section"]
+                        if "Section" in e.attrib: value += "\rSection: " + e.attrib["Section"]
                         l.add(code(value))
                         self.annotations[name] = l
 
@@ -141,39 +138,39 @@ class AttackPattern:
                 if el is not None:
                         r = "Submission:"
                         for s in el.findall(LS + "Submission_Name"):
-                                r += "\n\tSubmission Name: " + code(s.text)
+                                r += "\r\tSubmission Name: " + code(s.text)
                         for s in el.findall("Submission_Organization"):
-                                r += "\n\tSubmission Organization: " + code(s.text)
+                                r += "\r\tSubmission Organization: " + code(s.text)
                         s = el.find(LS + "Submission_Date")
-                        if s is not None: r += "\n\tSubmission Date: " + code(s.text)
+                        if s is not None: r += "\r\tSubmission Date: " + code(s.text)
                         s = el.find(LS + "Submission_Comment")
-                        if s is not None: r += "\n\tSubmission Comment: " + code(s.text)
+                        if s is not None: r += "\r\tSubmission Comment: " + code(s.text)
                 for el in e.findall(LS + "Modification"):
-                        r += "\nModification:"
+                        r += "\rModification:"
                         s = el.find("Modification_Name")
-                        if s is not None: r += "\n\tModification Name: " + code(s.text)
+                        if s is not None: r += "\r\tModification Name: " + code(s.text)
                         s = el.find(LS + "Modification_Organization")
-                        if s is not None: r += "\n\tModification Organization: " + code(s.text)
+                        if s is not None: r += "\r\tModification Organization: " + code(s.text)
                         s = el.find(LS + "Modification_Date")
-                        if s is not None: r += "\n\tModification Date: " + code(s.text)
+                        if s is not None: r += "\r\tModification Date: " + code(s.text)
                         s = el.find(LS + "Modification_Importance")
-                        if s is not None: r += "\n\tModification Importance: " + code(s.text)
+                        if s is not None: r += "\r\tModification Importance: " + code(s.text)
                         s = el.find(LS + "Modification_Comment")
-                        if s is not None: r += "\n\tModification Comment: " + code(s.text)
+                        if s is not None: r += "\r\tModification Comment: " + code(s.text)
                 for el in e.findall(LS + "Contribution"):
-                        r += "\nContribution:"
+                        r += "\rContribution:"
                         s = el.find("Contribution_Name")
-                        if s is not None: r += "\n\tContribution Name: " + code(s.text)
+                        if s is not None: r += "\r\tContribution Name: " + code(s.text)
                         s = el.find(LS + "Contribution_Organization")
-                        if s is not None: r += "\n\tContribution Organization: " + code(s.text)
+                        if s is not None: r += "\r\tContribution Organization: " + code(s.text)
                         s = el.find(LS + "Contribution_Date")
-                        if s is not None: r += "\n\tContribution Date: " + code(s.text)
+                        if s is not None: r += "\r\tContribution Date: " + code(s.text)
                         s = el.find(LS + "Contribution_Comment")
-                        if s is not None: r += "\n\tContribution Comment: " + code(s.text)
-                        r += "\n\tType: " + code(el.attrib["Type"])
+                        if s is not None: r += "\r\tContribution Comment: " + code(s.text)
+                        r += "\r\tType: " + code(el.attrib["Type"])
                 for el in e.findall(LS + "Previous_Entry_Name"):
-                        r += "\nPrevious Entry Name: " + code(el.text)
-                        r += "\n\tDate: " + el.attrib["Date"]
+                        r += "\rPrevious Entry Name: " + code(el.text)
+                        r += "\r\tDate: " + el.attrib["Date"]
                 self.annotations["Content_History"] = {r}
 
         def addObjectFact(self, path, oName, cName, cADict):
@@ -224,7 +221,7 @@ class AttackPattern:
                         if references:
                                 for ref in e.findall(LS + "References/" + LS + "Reference"):
                                         an = "External reference ID: " + ref.attrib["External_Reference_ID"]
-                                        if "Section" in ref.attrib: an += "\nSection: " + ref.attrib["Section"]
+                                        if "Section" in ref.attrib: an += "\rSection: " + ref.attrib["Section"]
                                         ind.addAnnotation("Reference", code(an))
                         count += 1
                         
@@ -246,27 +243,27 @@ class AttackPattern:
                 self.object_facts[oName] = ol
 
         def tostring(self):
-                r = "\r### " + self.IRI + "\n:" + self.IRI + "\r\trdf:type owl:NamedIndividual;\r\t:ID " + self.element.attrib["ID"]
+                r = "\n### " + self.IRI + "\n:" + self.IRI + "\n\trdf:type owl:NamedIndividual;\n\t:ID " + self.element.attrib["ID"]
                 for t in self.types:
-                        r += ";\r\trdf:type :" + t
+                        r += ";\n\trdf:type :" + t
                 if self.annotations:
                         for a, l in self.annotations.items():
                                 for v in l:
-                                        r += ";\r\t:" + a + " \"" + v + "\""
+                                        r += ";\n\t:" + a + " \"" + v + "\""
                 if self.data_facts:
                         for f, fd in self.data_facts.items():
                                 for fv, ad in fd.items():
                                         for a, avl in ad.items():
                                                 for av in avl:
-                                                         r += ";\r\t:" + a + " \"" + av + "\""
-                                        r += ";\r\t:" + f + " \"" + fv + "\""
+                                                         r += ";\n\t:" + a + " \"" + av + "\""
+                                        r += ";\n\t:" + f + " \"" + fv + "\""
                 if self.object_facts:
                         for f, fl in self.object_facts.items():
                                 for ind in fl:
                                         value = ""
                                         if ":" not in ind: value = ":"
                                         value += ind
-                                        r += ";\r\t:" + f + " " + value
+                                        r += ";\n\t:" + f + " " + value
                 return r + "."
         
         def addMembers(self, relationships = False):
@@ -342,32 +339,32 @@ class Individual:
                 s.add(v)
                 self.annotations[a] = s
         def tostring(self):
-                r = "\r###  " + self.name + "\n:" + self.name + "\r\trdf:type owl:NamedIndividual" 
+                r = "\n###  " + self.name + "\n:" + self.name + "\n\trdf:type owl:NamedIndividual" 
                 if self.types:
                         for t in self.types:
-                                r += ";\r\trdf:type :" + t
+                                r += ";\n\trdf:type :" + t
                 if self.annotations:
                         for a, av in self.annotations.items():
                                 for l in av:
-                                        r += ";\r\t:" + a + " \"" + l + "\""
+                                        r += ";\n\t:" + a + " \"" + l + "\""
                 if self.data_facts:
                         for f, fv in self.data_facts.items():
                                 for v in fv:
                                         if f == "Step":
-                                                 r += ";\r\t:" + f + " \"" + v + "\"^^xsd:positiveInteger"
+                                                 r += ";\n\t:" + f + " \"" + v + "\"^^xsd:positiveInteger"
                                         else:
-                                                r += ";\r\t:" + f + " \"" + v + "\""
+                                                r += ";\n\t:" + f + " \"" + v + "\""
                 if self.object_facts:
                         for f, fv in self.object_facts.items():
                                 for v in fv:
                                         if f == "CPE_ID":
-                                                r += ";\r\tcpe:CPE_ID " + convert_fs_to_compressed_uri(v)
+                                                r += ";\n\tcpe:CPE_ID " + convert_fs_to_compressed_uri(v)
                                         else:
-                                                r += ";\r\t:" + f + " :" + v
+                                                r += ";\n\t:" + f + " :" + v
                 if self.object_facts_with_annotations:
                         for f, fv in self.object_facts_with_annotations.items():
                                 for v in fv:
-                                        r += ";\r\t:" + v[1] + " \"" + v[2] + "\";\r\t:" + f + " :" + v[0]
+                                        r += ";\n\t:" + v[1] + " \"" + v[2] + "\";\n\t:" + f + " :" + v[0]
                 return r + "."
 
 def downloadCAPEC():
@@ -516,7 +513,7 @@ def generateIndividuals(root):
                         r = ""
                         if externalreferences is not None:
                                 for e in externalreferences.findall(LS + "External_Reference"):
-                                        r += ":External_Reference \""
+                                        r += ':External_Reference "'
                                         if "Reference_ID" in e.attrib: r += "\nReference_ID: " + e.attrib["Reference_ID"]
                                         for a in e.findall(LS + "Author"): r += "\nAuthor: " + code(a.text)
                                         r += "\nTitle: " + code(e.find(LS + "Title").text)
@@ -536,9 +533,9 @@ def generateIndividuals(root):
                                         if url is not None: r += "\nURL: " + code(url.text)
                                         url = e.find(LS + "URL_Date")
                                         if url is not None: r += "\nURL date: " + code(url.text)
-                                        r += "\"^^rdfs:Literal ;\r"
+                                        r += '" ;\n'
                                 return r
-                
+
                 with open("shell.ttl", mode='r', encoding='utf-8') as in_file:
                         shell = in_file.read()
                         name = root.attrib["Name"]
@@ -550,7 +547,7 @@ def generateIndividuals(root):
                         date = root.attrib["Date"]
                         date = "" if date is None else date
                         shell = shell.replace("DATE", date)
-                        shell = shell.replace(":External_Reference \"\"^^rdfs:Literal ;\n", collectExternalReferences())
+                        shell = shell.replace(':External_Reference " ;\n', collectExternalReferences())
                         out_file.write(shell)                                                       
                 out_file.write("\n")
                 
@@ -590,7 +587,7 @@ def generateIndividuals(root):
         print("Processing finished")
 
 def main(download):
-        print("CAPEC Ontology Generator, Version 6.0")
+        print("CAPEC Ontology Generator, Version 7.1")
         start = datetime.now()
         print(start)
         if download:

@@ -1,16 +1,16 @@
+@prefix : <http://www.semanticweb.org/capec#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix cwe: <http://www.semanticweb.org/cwe#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix cwe: <http://www.semanticweb.org/cwe#> .
-@prefix : <http://www.semanticweb.org/capec#> .
-@base <http://www.semanticweb.org/capec> .
+@base <http://www.semanticweb.org/capec#> .
 
 <http://www.semanticweb.org/capec> rdf:type owl:Ontology ;
-	:External_Reference ""^^rdfs:Literal ;
-	rdfs:comment """The CAPEC Schema is maintained by The MITRE Corporation and developed in partnership with the public CAPEC Community. For more information, including how to get involved in the project and how to submit change requests, please visit the CAPEC website at http://capec.mitre.org.
+                                    :External_Reference "" ;
+                                    rdfs:comment """The CAPEC Schema is maintained by The MITRE Corporation and developed in partnership with the public CAPEC Community. For more information, including how to get involved in the project and how to submit change requests, please visit the CAPEC website at http://capec.mitre.org.
 Core Attack Pattern
 3.5.0
 21 October 2021
@@ -19,141 +19,144 @@ The Attack_Pattern_Catalog root element is used to hold an enumerated catalog of
 NAME
 VERSION
 DATE"""@en ;
-	rdfs:isDefinedBy "Vladimir Dimitrov"@en ;
-	owl:versionInfo "1.6"@en .
+                                    rdfs:isDefinedBy "Vladimir Dimitrov"@en ;
+                                    owl:versionInfo "1.8"@en .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
-###  http://www.semanticweb.org/cht_c/capec#Alternate_Term_Description
+###  http://www.semanticweb.org/capec#Alternate_Term_Description
 :Alternate_Term_Description rdf:type owl:AnnotationProperty ;
-                            rdfs:comment "Alternate_Term" ;
-                            rdfs:range rdfs:Literal .
+                            rdfs:comment "Alternate_Term"@en ;
+                            rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Attack_Pattern_Description
+###  http://www.semanticweb.org/capec#Attack_Pattern_Description
 :Attack_Pattern_Description rdf:type owl:AnnotationProperty ;
-                            rdfs:range rdfs:Literal ;
+                            rdfs:range xsd:string ;
                             rdfs:domain :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Attack_Step_Description
+###  http://www.semanticweb.org/capec#Attack_Step_Description
 :Attack_Step_Description rdf:type owl:AnnotationProperty ;
-                         rdfs:range rdfs:Literal ;
+                         rdfs:range xsd:string ;
                          rdfs:domain :Attack_Step .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Audience_Description
+###  http://www.semanticweb.org/capec#Audience_Description
 :Audience_Description rdf:type owl:AnnotationProperty ;
-                      rdfs:comment "Audience" ;
-                      rdfs:range rdfs:Literal .
+                      rdfs:comment "Audience"@en ;
+                      rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Consequence_Note
+###  http://www.semanticweb.org/capec#Consequence_Note
 :Consequence_Note rdf:type owl:AnnotationProperty ;
-                  rdfs:range rdfs:Literal ;
+                  rdfs:range xsd:string ;
                   rdfs:domain :Consequence .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Content_History
+###  http://www.semanticweb.org/capec#Content_History
 :Content_History rdf:type owl:AnnotationProperty ;
                  rdfs:comment """The ContentHistoryType complex type provides elements to keep track of the original author of an entry and any subsequent modifications to the content. The optional Submission element is used to identify the submitter, their organization, the date, and any comments related to an entry. The optional Modification element is used to identify a modifier's name, organization, the date, and any related comments. A new Modification element should exist for each change made to the content. Modifications that change the meaning of the entry, or how it might be interpreted, should be marked with an importance of critical to bring it to the attention of anyone previously dependent on the attack pattern. The optional Contribution element is used to identify a contributor's name, organization, the date, and any related comments. This element has a single Type attribute, which indicates whether the contribution was part of general feedback given or actual content that was donated. The optional Previous_Entry_Name element is used to describe a previous name that was used for the entry. This should be filled out whenever a substantive name change occurs. The required Date attribute lists the date on which this name change was made. A Previous_Entry_Name element should align with a corresponding Modification element.
-Attack_Pattern or Category or View"""^^rdfs:Literal ;
-                 rdfs:range rdfs:Literal .
+Attack_Pattern or Category or View"""@en ;
+                 rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Example
+###  http://www.semanticweb.org/capec#Example
 :Example rdf:type owl:AnnotationProperty ;
-         rdfs:comment "The ExampleInstancesType complex type is used to describe one or more example instances of the attack pattern. An example helps the reader understand the nature, context and variability of the attack in more practical and concrete terms."^^rdfs:Literal ;
-         rdfs:range rdfs:Literal ;
+         rdfs:comment "The ExampleInstancesType complex type is used to describe one or more example instances of the attack pattern. An example helps the reader understand the nature, context and variability of the attack in more practical and concrete terms."@en ;
+         rdfs:range xsd:string ;
          rdfs:domain :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Extended_Description
+###  http://www.semanticweb.org/capec#Extended_Description
 :Extended_Description rdf:type owl:AnnotationProperty ;
-                      rdfs:range rdfs:Literal ;
+                      rdfs:range xsd:string ;
                       rdfs:domain :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#External_Reference
+###  http://www.semanticweb.org/capec#External_Reference
 :External_Reference rdf:type owl:AnnotationProperty ;
                     rdfs:comment """The ExternalReferenceType complex type defines a collection of elements that provide a pointer to where more information and deeper insight can be obtained. Examples would be a research paper or an excerpt from a publication.
 Not all of the elements need to be used, since some are designed for web references and others are designed for book references. The Author and Title elements should be filled out for all references if possible; Author is optional, but Title is required. The optional Edition element identifies the edition of the material being referenced in the event that multiple editions of the material exist. If the reference is part of a magazine or journal, the Publication element should be used to identify the name of the publisher. The optional Publication_Year, Publication_Month, Publication_Day, and Publisher elements should be used to more specifically identify the publication via its date and publisher. The year must follow the YYYY format while the month must follow the --MM format and the day must follow the ----DD format. The URL and URL_Date elements are used to capture a URL for the material being referenced, if one exists, and the date when the URL was validated to exist.
-The required Reference_ID attribute exists to provide a globally unique identifier for the reference (e.g., REF-1). The ID is used by other entities to link to this external reference."""^^rdfs:Literal ;
-                    rdfs:range rdfs:Literal .
+The required Reference_ID attribute exists to provide a globally unique identifier for the reference (e.g., REF-1). The ID is used by other entities to link to this external reference.
+Ontology level."""@en ;
+                    rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Filter
+###  http://www.semanticweb.org/capec#Filter
 :Filter rdf:type owl:AnnotationProperty ;
-        rdfs:range rdfs:Literal ;
+        rdfs:range xsd:string ;
         rdfs:domain :View .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Indicator
+###  http://www.semanticweb.org/capec#Indicator
 :Indicator rdf:type owl:AnnotationProperty ;
-           rdfs:comment "The IndicatorsType complex type is used to describe activities, events, conditions or behaviors that may indicate that an attack of leveraging this attack pattern is imminent, in progress, or has occurred. Each individual Indicator element provides a textual description of the indicator."^^rdfs:Literal ;
-           rdfs:range rdfs:Literal ;
+           rdfs:comment "The IndicatorsType complex type is used to describe activities, events, conditions or behaviors that may indicate that an attack of leveraging this attack pattern is imminent, in progress, or has occurred. Each individual Indicator element provides a textual description of the indicator."@en ;
+           rdfs:range xsd:string ;
            rdfs:domain :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Mitigation
+###  http://www.semanticweb.org/capec#Mitigation
 :Mitigation rdf:type owl:AnnotationProperty ;
-            rdfs:comment "The MitigationsType complex type is used to describe actions or approaches to prevent or mitigate the risk of an attack that leverages this attack pattern. The approaches described in each individual mitigation child element should help improve the resiliency of the target system, reduce its attack surface, or reduce the impact of the attack if it is successful."^^rdfs:Literal ;
-            rdfs:range rdfs:Literal ;
+            rdfs:comment "The MitigationsType complex type is used to describe actions or approaches to prevent or mitigate the risk of an attack that leverages this attack pattern. The approaches described in each individual mitigation child element should help improve the resiliency of the target system, reduce its attack surface, or reduce the impact of the attack if it is successful."@en ;
+            rdfs:range xsd:string ;
             rdfs:domain :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Note_Description
+###  http://www.semanticweb.org/capec#Note_Description
 :Note_Description rdf:type owl:AnnotationProperty ;
-                  rdfs:range rdfs:Literal ;
+                  rdfs:range xsd:string ;
                   rdfs:domain :Note .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Objective
+###  http://www.semanticweb.org/capec#Objective
 :Objective rdf:type owl:AnnotationProperty ;
-           rdfs:range rdfs:Literal ;
+           rdfs:range xsd:string ;
            rdfs:domain :View .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Prerequisite
+###  http://www.semanticweb.org/capec#Prerequisite
 :Prerequisite rdf:type owl:AnnotationProperty ;
-              rdfs:comment "The PrerequisitesType complex type indicates one or more prerequisites for an attack and is used to provide a description of the conditions that must exist in order for an attack of this type to succeed."^^rdfs:Literal ;
-              rdfs:range rdfs:Literal ;
+              rdfs:comment "The PrerequisitesType complex type indicates one or more prerequisites for an attack and is used to provide a description of the conditions that must exist in order for an attack of this type to succeed."@en ;
+              rdfs:range xsd:string ;
               rdfs:domain :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Reference
+###  http://www.semanticweb.org/capec#Reference
 :Reference rdf:type owl:AnnotationProperty ;
            rdfs:comment """The ReferencesType complex type contains one or more reference elements, each of which is used to link to an external reference defined within the catalog. The required External_Reference_ID attribute represents the external reference entry being linked to (e.g., REF-1). Text or quotes within the same entity can cite this External_Reference_ID similar to how a footnote is used, and should use the format [REF-1]. The optional Section attribute holds any section title or page number that is specific to this use of the reference.
-Attack_Pattern or Category or View"""^^rdfs:Literal ;
-           rdfs:range rdfs:Literal .
+Attack_Pattern or Category or View"""@en ;
+           rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Resource
+###  http://www.semanticweb.org/capec#Resource
 :Resource rdf:type owl:AnnotationProperty ;
-          rdfs:comment "The RequiredResourcesType complex type is used to describe the resources (e.g., CPU cycles, IP addresses, tools) required by an adversary to effectively execute this type of attack."^^rdfs:Literal .
+          rdfs:comment "The RequiredResourcesType complex type is used to describe the resources (e.g., CPU cycles, IP addresses, tools) required by an adversary to effectively execute this type of attack."@en ;
+          rdfs:range xsd:string ;
+          rdfs:domain :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Skill_Description
+###  http://www.semanticweb.org/capec#Skill_Description
 :Skill_Description rdf:type owl:AnnotationProperty ;
-                   rdfs:range rdfs:Literal ;
+                   rdfs:range xsd:string ;
                    rdfs:domain :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Summary
+###  http://www.semanticweb.org/capec#Summary
 :Summary rdf:type owl:AnnotationProperty ;
-         rdfs:range rdfs:Literal ;
+         rdfs:range xsd:string ;
          rdfs:domain :Category .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Technique_Description
+###  http://www.semanticweb.org/capec#Technique_Description
 :Technique_Description rdf:type owl:AnnotationProperty ;
-                       rdfs:comment "Attack_Step or Technique" ;
-                       rdfs:range rdfs:Literal .
+                       rdfs:comment "Attack_Step or Technique"@en ;
+                       rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#catalog
+###  http://www.semanticweb.org/capec#catalog
 :catalog rdf:type owl:AnnotationProperty .
 
 
@@ -173,14 +176,6 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 #    Datatypes
 #################################################################
 
-###  http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral
-rdf:PlainLiteral rdf:type rdfs:Datatype .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#Literal
-rdfs:Literal rdf:type rdfs:Datatype .
-
-
 ###  http://www.w3.org/2001/XMLSchema#positiveInteger
 xsd:positiveInteger rdf:type rdfs:Datatype .
 
@@ -193,49 +188,48 @@ xsd:string rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-
-###  http://www.semanticweb.org/cht_c/capec#CanAlsoBe
+###  http://www.semanticweb.org/capec#CanAlsoBe
 :CanAlsoBe rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :Related_Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#CanFollow
+###  http://www.semanticweb.org/capec#CanFollow
 :CanFollow rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :Related_Attack_Pattern ;
            owl:inverseOf :CanPrecede .
 
 
-###  http://www.semanticweb.org/cht_c/capec#CanPrecede
+###  http://www.semanticweb.org/capec#CanPrecede
 :CanPrecede rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :Related_Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#ChildOf
+###  http://www.semanticweb.org/capec#ChildOf
 :ChildOf rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :Related_Attack_Pattern ;
          owl:inverseOf :ParentOf .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Consequence
+###  http://www.semanticweb.org/capec#Consequence
 :Consequence rdf:type owl:ObjectProperty ;
              rdfs:domain :Attack_Pattern ;
              rdfs:range :Consequence .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Exclude_Related
+###  http://www.semanticweb.org/capec#Exclude_Related
 :Exclude_Related rdf:type owl:ObjectProperty ;
                  rdfs:domain :Attack_Pattern ;
                  rdfs:range :Category .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Execution_Flow
+###  http://www.semanticweb.org/capec#Execution_Flow
 :Execution_Flow rdf:type owl:ObjectProperty ;
                 rdfs:domain :Attack_Pattern ;
                 rdfs:range :Attack_Step ;
-                rdfs:comment "The ExecutionFlowType complex type is used to provide a detailed step by step flow of an attack pattern. It lists the steps typically performed by an adversary when leveraging the given technique. This element is usually only applicable to attack patterns with an abstraction level of detailed."^^rdfs:Literal .
+                rdfs:comment "The ExecutionFlowType complex type is used to provide a detailed step by step flow of an attack pattern. It lists the steps typically performed by an adversary when leveraging the given technique. This element is usually only applicable to attack patterns with an abstraction level of detailed."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Has_Member
+###  http://www.semanticweb.org/capec#Has_Member
 :Has_Member rdf:type owl:ObjectProperty ;
             owl:inverseOf :Member_Of ;
             rdfs:domain [ rdf:type owl:Class ;
@@ -249,10 +243,10 @@ xsd:string rdf:type rdfs:Datatype .
                                        :View
                                      )
                        ] ;
-            rdfs:comment "The RelationshipsType complex type provides elements to show the relationships associated with categories. The Member_Of element is used to show memberOf relationship with a given view or category. The Has_Member element is used to show a hasMember relationship with a given attack pattern or category. In both cases, the required CAPEC_ID attribute specifies the unique CAPEC ID that is the target entry of the relationship. Special cases may require any number of Exclude_Related elements to capture the CAPEC identifier of an ancestor for which this relationship is not applicable."^^rdfs:Literal .
+            rdfs:comment "The RelationshipsType complex type provides elements to show the relationships associated with categories. The Member_Of element is used to show memberOf relationship with a given view or category. The Has_Member element is used to show a hasMember relationship with a given attack pattern or category. In both cases, the required CAPEC_ID attribute specifies the unique CAPEC ID that is the target entry of the relationship. Special cases may require any number of Exclude_Related elements to capture the CAPEC identifier of an ancestor for which this relationship is not applicable."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Member_Of
+###  http://www.semanticweb.org/capec#Member_Of
 :Member_Of rdf:type owl:ObjectProperty ;
            rdfs:domain [ rdf:type owl:Class ;
                          owl:unionOf ( :Attack_Pattern
@@ -265,10 +259,10 @@ xsd:string rdf:type rdfs:Datatype .
                                       :View
                                     )
                       ] ;
-           rdfs:comment "The RelationshipsType complex type provides elements to show the relationships associated with categories. The Member_Of element is used to show memberOf relationship with a given view or category. The Has_Member element is used to show a hasMember relationship with a given attack pattern or category. In both cases, the required CAPEC_ID attribute specifies the unique CAPEC ID that is the target entry of the relationship. Special cases may require any number of Exclude_Related elements to capture the CAPEC identifier of an ancestor for which this relationship is not applicable."^^rdfs:Literal .
+           rdfs:comment "The RelationshipsType complex type provides elements to show the relationships associated with categories. The Member_Of element is used to show memberOf relationship with a given view or category. The Has_Member element is used to show a hasMember relationship with a given attack pattern or category. In both cases, the required CAPEC_ID attribute specifies the unique CAPEC ID that is the target entry of the relationship. Special cases may require any number of Exclude_Related elements to capture the CAPEC identifier of an ancestor for which this relationship is not applicable."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Note
+###  http://www.semanticweb.org/capec#Note
 :Note rdf:type owl:ObjectProperty ;
       rdfs:domain [ rdf:type owl:Class ;
                     owl:unionOf ( :Attack_Pattern
@@ -279,32 +273,32 @@ xsd:string rdf:type rdfs:Datatype .
       rdfs:range :Note .
 
 
-###  http://www.semanticweb.org/cht_c/capec#ParentOf
+###  http://www.semanticweb.org/capec#ParentOf
 :ParentOf rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :Related_Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#PeerOf
+###  http://www.semanticweb.org/capec#PeerOf
 :PeerOf rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :Related_Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Related_Attack_Pattern
+###  http://www.semanticweb.org/capec#Related_Attack_Pattern
 :Related_Attack_Pattern rdf:type owl:ObjectProperty ;
                         rdfs:domain :Attack_Pattern ;
                         rdfs:range :Attack_Pattern ;
                         rdfs:comment """The RelatedAttackPatternType complex type is used to refer to other attack patterns and give insight to similar items that may exist at higher and lower levels of abstraction. It contains one or more Related_Attack_Pattern elements, each of which is used to link to the CAPEC identifier of the other attack pattern. The nature of the relation is also capture by the Nature attribute. Please see the RelatedNatureEnumeration simple type definition for details about the valid values and meanings. Special cases may require any number of Exclude_Related elements to capture the CAPEC identifier of an ancestor for which this Related_Attack_Pattern relationship is not applicable.
-The RelatedNatureEnumeration simple type defines the different values that can be used to define the nature of a related attack pattern. A ChildOf nature denotes a related attack pattern as a higher level of abstraction. A ParentOf nature denotes a related attack pattern as a lower level of abstraction. The CanPrecede and CanFollow relationships are used to denote attack patterns that are part of a chaining structure. The CanAlsoBe relationship denotes a attack pattern that, in the proper environment and context, can also be perceived as the target attack pattern. Note that the CanAlsoBe relationship is not necessarily reciprocal. The PeerOf relationship is used to show some similarity with the target attack pattern which does not fit any of the other types of relationships."""^^rdfs:Literal .
+The RelatedNatureEnumeration simple type defines the different values that can be used to define the nature of a related attack pattern. A ChildOf nature denotes a related attack pattern as a higher level of abstraction. A ParentOf nature denotes a related attack pattern as a lower level of abstraction. The CanPrecede and CanFollow relationships are used to denote attack patterns that are part of a chaining structure. The CanAlsoBe relationship denotes a attack pattern that, in the proper environment and context, can also be perceived as the target attack pattern. Note that the CanAlsoBe relationship is not necessarily reciprocal. The PeerOf relationship is used to show some similarity with the target attack pattern which does not fit any of the other types of relationships."""@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Related_Weakness
+###  http://www.semanticweb.org/capec#Related_Weakness
 :Related_Weakness rdf:type owl:ObjectProperty ;
                   rdfs:domain :Attack_Pattern ;
                   rdfs:range cwe:Weakness ;
-                  rdfs:comment "The RelatedWeaknessesType complex type contains references to weaknesses associated with this attack pattern. The association implies a weakness that must exist for a given attack to be successful. If multiple weaknesses are associated with the attack pattern, then any of the weaknesses (but not necessarily all) may be present for the attack to be successful. Each related weakness is identified by a CWE identifier."^^rdfs:Literal .
+                  rdfs:comment "The RelatedWeaknessesType complex type contains references to weaknesses associated with this attack pattern. The association implies a weakness that must exist for a given attack to be successful. If multiple weaknesses are associated with the attack pattern, then any of the weaknesses (but not necessarily all) may be present for the attack to be successful. Each related weakness is identified by a CWE identifier."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Taxonomy_Mapping
+###  http://www.semanticweb.org/capec#Taxonomy_Mapping
 :Taxonomy_Mapping rdf:type owl:ObjectProperty ;
                   rdfs:domain [ rdf:type owl:Class ;
                                 owl:unionOf ( :Attack_Pattern
@@ -314,7 +308,7 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                   rdfs:range :Taxonomy_Mapping .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Technique
+###  http://www.semanticweb.org/capec#Technique
 :Technique rdf:type owl:ObjectProperty ;
            rdfs:domain :Attack_Step ;
            rdfs:range :Attack_Pattern .
@@ -324,14 +318,14 @@ The RelatedNatureEnumeration simple type defines the different values that can b
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/cht_c/capec#Alternate_Term
+###  http://www.semanticweb.org/capec#Alternate_Term
 :Alternate_Term rdf:type owl:DatatypeProperty ;
                 rdfs:domain :Attack_Pattern ;
                 rdfs:range xsd:string ;
-                rdfs:comment "The AlternateTermsType complex type indicates one or more other names used to describe this attack pattern. The required Term element contains the actual alternate term. The required Description element provides context for each alternate term by which this attack pattern may be known."^^rdfs:Literal .
+                rdfs:comment "The AlternateTermsType complex type indicates one or more other names used to describe this attack pattern. The required Term element contains the actual alternate term. The required Description element provides context for each alternate term by which this attack pattern may be known."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Audience
+###  http://www.semanticweb.org/capec#Audience
 :Audience rdf:type owl:DatatypeProperty ;
           rdfs:domain :View ;
           rdfs:range [ rdf:type rdfs:Datatype ;
@@ -373,31 +367,31 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                             ]
                                  ]
                      ] ;
-          rdfs:comment "The AudienceType complex type provides a reference to the target stakeholders or groups for a view. For each stakeholder, the required Type element specifies the type of members that might be interested in the view. The required Description element provides some text describing what properties of the view this particular stakeholder might find useful."^^rdfs:Literal .
+          rdfs:comment "The AudienceType complex type provides a reference to the target stakeholders or groups for a view. For each stakeholder, the required Type element specifies the type of members that might be interested in the view. The required Description element provides some text describing what properties of the view this particular stakeholder might find useful."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Consequence_ID
+###  http://www.semanticweb.org/capec#Consequence_ID
 :Consequence_ID rdf:type owl:DatatypeProperty ,
                          owl:FunctionalProperty ;
                 rdfs:domain :Consequence ;
                 rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Entry_ID
+###  http://www.semanticweb.org/capec#Entry_ID
 :Entry_ID rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
           rdfs:domain :Taxonomy_Mapping ;
           rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Entry_Name
+###  http://www.semanticweb.org/capec#Entry_Name
 :Entry_Name rdf:type owl:DatatypeProperty ,
                      owl:FunctionalProperty ;
             rdfs:domain :Taxonomy_Mapping ;
             rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#ID
+###  http://www.semanticweb.org/capec#ID
 :ID rdf:type owl:DatatypeProperty ,
              owl:FunctionalProperty ;
     rdfs:domain [ rdf:type owl:Class ;
@@ -409,7 +403,7 @@ The RelatedNatureEnumeration simple type defines the different values that can b
     rdfs:range xsd:positiveInteger .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Impact
+###  http://www.semanticweb.org/capec#Impact
 :Impact rdf:type owl:DatatypeProperty ;
         rdfs:domain :Consequence ;
         rdfs:range [ rdf:type rdfs:Datatype ;
@@ -445,31 +439,10 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                           ]
                                ]
                    ] ;
-        rdfs:comment "The ImpactEnumeration simple type defines the different negative technical impacts that can results from an attack leveraging a given attack pattern. A negative technical impact is the specific effect of successfully violating a reasonable security policy for the system or network."^^rdfs:Literal .
+        rdfs:comment "The ImpactEnumeration simple type defines the different negative technical impacts that can results from an attack leveraging a given attack pattern. A negative technical impact is the specific effect of successfully violating a reasonable security policy for the system or network."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Skill
-:Skill rdf:type owl:DatatypeProperty ,
-                owl:FunctionalProperty ;
-       rdfs:range [ rdf:type rdfs:Datatype ;
-                    owl:oneOf [ rdf:type rdf:List ;
-                                rdf:first "High" ;
-                                rdf:rest [ rdf:type rdf:List ;
-                                           rdf:first "Low" ;
-                                           rdf:rest [ rdf:type rdf:List ;
-                                                      rdf:first "Medium" ;
-                                                      rdf:rest [ rdf:type rdf:List ;
-                                                                 rdf:first "Unknown" ;
-                                                                 rdf:rest rdf:nil
-                                                               ]
-                                                    ]
-                                         ]
-                              ]
-                  ] ;
-       rdfs:comment "The SkillLevelEnumeration simple type contains a list of values corresponding to different knowledge levels required to perform an attack. The value \"Unknown\" should be used when the actual skill level is not known."^^rdfs:Literal .
-
-
-###  http://www.semanticweb.org/cht_c/capec#Likelihood
+###  http://www.semanticweb.org/capec#Likelihood
 :Likelihood rdf:type owl:DatatypeProperty ,
                      owl:FunctionalProperty ;
             rdfs:domain :Consequence ;
@@ -488,10 +461,10 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                               ]
                                    ]
                        ] ;
-            rdfs:comment "The LikelihoodEnumeration simple type contains a list of values corresponding to different likelihoods. The value \"Unknown\" should be used when the actual likelihood of something occurring is not known."^^rdfs:Literal .
+            rdfs:comment "The LikelihoodEnumeration simple type contains a list of values corresponding to different likelihoods. The value \"Unknown\" should be used when the actual likelihood of something occurring is not known."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Likelihood_Of_Attack
+###  http://www.semanticweb.org/capec#Likelihood_Of_Attack
 :Likelihood_Of_Attack rdf:type owl:DatatypeProperty ,
                                owl:FunctionalProperty ;
                       rdfs:domain :Attack_Pattern ;
@@ -510,10 +483,10 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                                         ]
                                              ]
                                  ] ;
-                      rdfs:comment "The LikelihoodEnumeration simple type contains a list of values corresponding to different likelihoods. The value \"Unknown\" should be used when the actual likelihood of something occurring is not known."^^rdfs:Literal .
+                      rdfs:comment "The LikelihoodEnumeration simple type contains a list of values corresponding to different likelihoods. The value \"Unknown\" should be used when the actual likelihood of something occurring is not known."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Mapping_Fit
+###  http://www.semanticweb.org/capec#Mapping_Fit
 :Mapping_Fit rdf:type owl:DatatypeProperty ,
                       owl:FunctionalProperty ;
              rdfs:domain :Taxonomy_Mapping ;
@@ -535,10 +508,10 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                                ]
                                     ]
                         ] ;
-             rdfs:comment "The TaxonomyMappingFitEnumeration simple type defines the different values used to describe how close a certain mapping to CAPEC is."^^rdfs:Literal .
+             rdfs:comment "The TaxonomyMappingFitEnumeration simple type defines the different values used to describe how close a certain mapping to CAPEC is."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Name
+###  http://www.semanticweb.org/capec#Name
 :Name rdf:type owl:DatatypeProperty ,
                owl:FunctionalProperty ;
       rdfs:domain [ rdf:type owl:Class ;
@@ -550,7 +523,7 @@ The RelatedNatureEnumeration simple type defines the different values that can b
       rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Phase
+###  http://www.semanticweb.org/capec#Phase
 :Phase rdf:type owl:DatatypeProperty ,
                 owl:FunctionalProperty ;
        rdfs:domain :Attack_Step ;
@@ -568,7 +541,7 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                   ] .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Scope
+###  http://www.semanticweb.org/capec#Scope
 :Scope rdf:type owl:DatatypeProperty ;
        rdfs:domain :Consequence ;
        rdfs:range [ rdf:type rdfs:Datatype ;
@@ -601,17 +574,37 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                          ]
                               ]
                   ] ;
-       rdfs:comment "The ScopeEnumeration simple type defines the different areas of software security that can be affected by exploiting a weakness."^^rdfs:Literal .
+       rdfs:comment "The ScopeEnumeration simple type defines the different areas of software security that can be affected by exploiting a weakness."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Step
+###  http://www.semanticweb.org/capec#Skill
+:Skill rdf:type owl:DatatypeProperty ;
+       rdfs:range [ rdf:type rdfs:Datatype ;
+                    owl:oneOf [ rdf:type rdf:List ;
+                                rdf:first "High" ;
+                                rdf:rest [ rdf:type rdf:List ;
+                                           rdf:first "Low" ;
+                                           rdf:rest [ rdf:type rdf:List ;
+                                                      rdf:first "Medium" ;
+                                                      rdf:rest [ rdf:type rdf:List ;
+                                                                 rdf:first "Unknown" ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ]
+                              ]
+                  ] ;
+       rdfs:comment "The SkillLevelEnumeration simple type contains a list of values corresponding to different knowledge levels required to perform an attack. The value \"Unknown\" should be used when the actual skill level is not known."@en .
+
+
+###  http://www.semanticweb.org/capec#Step
 :Step rdf:type owl:DatatypeProperty ,
                owl:FunctionalProperty ;
       rdfs:domain :Attack_Step ;
       rdfs:range xsd:positiveInteger .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Taxonomy_Name
+###  http://www.semanticweb.org/capec#Taxonomy_Name
 :Taxonomy_Name rdf:type owl:DatatypeProperty ,
                         owl:FunctionalProperty ;
                rdfs:domain :Taxonomy_Mapping ;
@@ -627,10 +620,10 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                                  ]
                                       ]
                           ] ;
-               rdfs:comment "The TaxonomyNameEnumeration simple type lists the different known taxomomies that can be mapped to CAPEC."^^rdfs:Literal .
+               rdfs:comment "The TaxonomyNameEnumeration simple type lists the different known taxomomies that can be mapped to CAPEC."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Type
+###  http://www.semanticweb.org/capec#Type
 :Type rdf:type owl:DatatypeProperty ,
                owl:FunctionalProperty ;
       rdfs:domain :Note ;
@@ -652,10 +645,10 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                         ]
                              ]
                  ] ;
-      rdfs:comment "The NoteTypeEnumeration simple type defines the different types of notes that can be associated with an attack pattern. A \"Maintenance\" note contains significant maintenance tasks within this entry that still need to be addressed, such as clarifying the concepts involved or improving relationships. A \"Relationship\" note provides clarifying details regarding the relationships between entities. A \"Research Gap\" note identifies potential opportunities for the research community to conduct further exploration of issues related to this attack pattern. A \"Terminology\" note contains a discussion of terminology issues related to this attack pattern, or clarifications when there is no established terminology, or if there are multiple uses of the same key term."^^rdfs:Literal .
+      rdfs:comment "The NoteTypeEnumeration simple type defines the different types of notes that can be associated with an attack pattern. A \"Maintenance\" note contains significant maintenance tasks within this entry that still need to be addressed, such as clarifying the concepts involved or improving relationships. A \"Relationship\" note provides clarifying details regarding the relationships between entities. A \"Research Gap\" note identifies potential opportunities for the research community to conduct further exploration of issues related to this attack pattern. A \"Terminology\" note contains a discussion of terminology issues related to this attack pattern, or clarifications when there is no established terminology, or if there are multiple uses of the same key term."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Typical_Severity
+###  http://www.semanticweb.org/capec#Typical_Severity
 :Typical_Severity rdf:type owl:DatatypeProperty ,
                            owl:FunctionalProperty ;
                   rdfs:domain :Attack_Pattern ;
@@ -677,14 +670,14 @@ The RelatedNatureEnumeration simple type defines the different values that can b
                                                     ]
                                          ]
                              ] ;
-                  rdfs:comment "The SeverityEnumeration simple type contains a list of values corresponding to different severities."^^rdfs:Literal .
+                  rdfs:comment "The SeverityEnumeration simple type contains a list of values corresponding to different severities."@en .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/cht_c/capec#Attack_Pattern
+###  http://www.semanticweb.org/capec#Attack_Pattern
 :Attack_Pattern rdf:type owl:Class ;
                 owl:disjointUnionOf ( :Detailed
                                       :Meta
@@ -695,84 +688,84 @@ The required Description element represents a high level description of the atta
 The required ID attribute provides a unique identifier for the attack pattern. It is considered static for the lifetime of the entry. If this entry becomes deprecated, the identifier should not be reused and a placeholder for the deprecated attack pattern should be left in the catalog. The required Name attribute provides a descriptive title used to give the reader an idea of what the attack pattern represents. All words in the name should be capitalized except for articles and prepositions unless they begin or end the name. The required Abstraction attribute defines the abstraction level for this attack pattern. The required Status attribute defines the status level for this view. Please refer to the related simple types for a more detailed description of what information these attributes provide and a list of valid values and their meanings.
 The AbstractionEnumeration simple type defines the different abstraction levels that apply to an attack pattern. A Meta level attack pattern in CAPEC is a decidedly abstract characterization of a specific methodology or technique used in an attack. A Meta attack pattern is often void of a specific technology or implementation and is meant to provide an understanding of a high level approach. A Meta level attack pattern is a generalization of related group of standard level attack patterns. Meta level attack patterns are particularly useful for architecture and design level threat modeling exercises.
 A Standard level attack pattern in CAPEC is focused on a specific methodology or technique used in an attack. It is often seen as a singular piece of a fully executed attack. A Standard attack pattern is meant to provide sufficient details to understand the specific technique and how it attempts to accomplish a desired goal. A Standard level attack pattern is a specific type of a more abstract meta level attack pattern.
-A Detailed level attack pattern in CAPEC provides a low level of detail, typically leveraging a specific technique and targeting a specific technology, and expresses a complete execution flow. Detailed attack patterns are more specific than meta and standard attack patterns and often require a specific protection mechanism to mitigate actual attacks. A Detailed level attack pattern often will leverage a number of different standard level attack patterns chained together to accomplish a goal.""" .
+A Detailed level attack pattern in CAPEC provides a low level of detail, typically leveraging a specific technique and targeting a specific technology, and expresses a complete execution flow. Detailed attack patterns are more specific than meta and standard attack patterns and often require a specific protection mechanism to mitigate actual attacks. A Detailed level attack pattern often will leverage a number of different standard level attack patterns chained together to accomplish a goal."""@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Attack_Step
+###  http://www.semanticweb.org/capec#Attack_Step
 :Attack_Step rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Category
+###  http://www.semanticweb.org/capec#Category
 :Category rdf:type owl:Class ;
           rdfs:comment """A category in CAPEC is a collection of attack patterns based on some common characteristic. More specifically, it is an aggregation of attack patterns based on effect/intent. (as opposed to actions or mechanisms, such an aggregation would be a meta attack pattern) An aggregation based on effect/intent is not an actionable attack and as such is not a pattern of attack behavior. Rather, it is a grouping of patterns based on some common criteria.
 The required Summary element should be short and limited to the key points that define the category. The optional Relationships element is used to define relationships with attack patterns, categories, and views. The optional Taxonomy_Mappings element is used to relate this category to similar categories in taxomomies outside of CAPEC. The optional References element is used to provide further reading and insight into this category. This should be used when the category is based on external sources or projects. The optional Notes element is used to provide any additional comments that cannot be captured using the other elements of the category. The optional Content_History element is used to keep track of the original author of the category and any subsequent modifications to the content. This provides a means of contacting the authors and modifiers for clarifying ambiguities, merging overlapping contributions, etc.
 The required ID attribute provides a unique identifier for the category. It is meant to be static for the lifetime of the category. In the event that the category becomes deprecated, the identifier should not be reused and a placeholder for the deprecated category should be left in the catalog. The required Name attribute provides a descriptive title used to give the reader an idea of what characteristic this category represents. All words in the name should be capitalized except for articles and prepositions unless they begin or end the name. The required Status attribute defines the status level for this category. Please refer to the StatusEnumeration simple type for a list of valid values and their meanings."""@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Consequence
+###  http://www.semanticweb.org/capec#Consequence
 :Consequence rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Deprecated
+###  http://www.semanticweb.org/capec#Deprecated
 :Deprecated rdf:type owl:Class ;
             rdfs:subClassOf :Status .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Detailed
+###  http://www.semanticweb.org/capec#Detailed
 :Detailed rdf:type owl:Class ;
           rdfs:subClassOf :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Draft
+###  http://www.semanticweb.org/capec#Draft
 :Draft rdf:type owl:Class ;
        rdfs:subClassOf :Status .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Explicit
+###  http://www.semanticweb.org/capec#Explicit
 :Explicit rdf:type owl:Class ;
           rdfs:subClassOf :View .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Graph
+###  http://www.semanticweb.org/capec#Graph
 :Graph rdf:type owl:Class ;
        rdfs:subClassOf :View .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Implicit
+###  http://www.semanticweb.org/capec#Implicit
 :Implicit rdf:type owl:Class ;
           rdfs:subClassOf :View .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Incomplete
+###  http://www.semanticweb.org/capec#Incomplete
 :Incomplete rdf:type owl:Class ;
             rdfs:subClassOf :Status .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Meta
+###  http://www.semanticweb.org/capec#Meta
 :Meta rdf:type owl:Class ;
       rdfs:subClassOf :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Note
+###  http://www.semanticweb.org/capec#Note
 :Note rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Obsolete
+###  http://www.semanticweb.org/capec#Obsolete
 :Obsolete rdf:type owl:Class ;
           rdfs:subClassOf :Status .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Stable
+###  http://www.semanticweb.org/capec#Stable
 :Stable rdf:type owl:Class ;
         rdfs:subClassOf :Status .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Standard
+###  http://www.semanticweb.org/capec#Standard
 :Standard rdf:type owl:Class ;
           rdfs:subClassOf :Attack_Pattern .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Status
+###  http://www.semanticweb.org/capec#Status
 :Status rdf:type owl:Class ;
         owl:disjointUnionOf ( :Attack_Pattern
                               :Category
@@ -788,16 +781,16 @@ The required ID attribute provides a unique identifier for the category. It is m
         rdfs:comment "The StatusEnumeration simple type defines the different status values that an entity (view, category, attack pattern) can have."@en .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Taxonomy_Mapping
+###  http://www.semanticweb.org/capec#Taxonomy_Mapping
 :Taxonomy_Mapping rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/cht_c/capec#Usable
+###  http://www.semanticweb.org/capec#Usable
 :Usable rdf:type owl:Class ;
         rdfs:subClassOf :Status .
 
 
-###  http://www.semanticweb.org/cht_c/capec#View
+###  http://www.semanticweb.org/capec#View
 :View rdf:type owl:Class ;
       owl:disjointUnionOf ( :Explicit
                             :Graph
@@ -809,7 +802,7 @@ The required ID attribute provides a unique identifier for the view. It is meant
 The ViewTypeEnumeration simple type defines the different types of views that can be found within CAPEC. A graph is a hierarchical representation of attack patterns based on a specific vantage point that a user my take. The hierarchy often starts with a category, followed by a meta/standard attack pattern, and ends with a detailed attack pattern. An explicit slice is a subset of attack patterns that are related through some external factor. For example, a view may be used to represent mappings to external groupings like a Top-N list. An implicit slice is a subset of attack patterns that are related through a specific attribute. For example, a slice may refer to all attack patterns in draft status, or all existing meta attack patterns."""@en .
 
 
-###  http://www.semanticweb.org/cht_c/cwe#Weakness
+###  http://www.semanticweb.org/cwe#Weakness
 cwe:Weakness rdf:type owl:Class .
 
 
@@ -818,13 +811,28 @@ cwe:Weakness rdf:type owl:Class .
 #################################################################
 
 :Consequence rdfs:comment """The ConsequencesType complex type is used to specify individual consequences associated with an attack pattern. The required Scope element identifies the security property that is violated. The optional Impact element describes the technical impact that arises if an adversary succeeds in their attack. The optional Likelihood element identifies how likely the specific consequence is expected to be seen relative to the other consequences. For example, there may be high likelihood that a pattern will be used to achieve a certain impact, but a low likelihood that it will be used to achieve a different impact. The optional Note element provides additional commentary about a consequence.
-The optional Consequence_ID attribute is used by the internal CAPEC team to uniquely identify consequences that are repeated across any number of individual patterns. To help make sure that the details of these common consequences stay synchronized, the Consequence_ID is used to quickly identify those examples across CAPEC that should be identical. The identifier is a string and should match the following format: CC-1."""^^rdfs:Literal .
+The optional Consequence_ID attribute is used by the internal CAPEC team to uniquely identify consequences that are repeated across any number of individual patterns. To help make sure that the details of these common consequences stay synchronized, the Consequence_ID is used to quickly identify those examples across CAPEC that should be identical. The identifier is a string and should match the following format: CC-1."""@en .
 
 
-:Note rdfs:comment "The NotesType complex type contains one or more note elements, each of which is used to provide any additional comments about an entry that cannot be captured using other elements."^^rdfs:Literal .
+:Note rdfs:comment "The NotesType complex type contains one or more note elements, each of which is used to provide any additional comments about an entry that cannot be captured using other elements."@en .
 
 
-:Taxonomy_Mapping rdfs:comment "The TaxonomyMappingsType complex type is used to provide a mapping from an entry (Attack Pattern or Category) in CAPEC to an equivalent entry in a different taxonomy. The required Taxonomy_Name attribute identifies the taxonomy to which the mapping is being made. The Entry_ID and Entry_Name elements identify the ID and name of the entry which is being mapped. The Mapping_Fit element identifies how close the CAPEC is to the entry in the taxonomy."^^rdfs:Literal .
+:Taxonomy_Mapping rdfs:comment "The TaxonomyMappingsType complex type is used to provide a mapping from an entry (Attack Pattern or Category) in CAPEC to an equivalent entry in a different taxonomy. The required Taxonomy_Name attribute identifies the taxonomy to which the mapping is being made. The Entry_ID and Entry_Name elements identify the ID and name of the entry which is being mapped. The Mapping_Fit element identifies how close the CAPEC is to the entry in the taxonomy."@en .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Attack_Step
+                :Consequence
+                :Note
+                :Status
+                :Taxonomy_Mapping
+                cwe:Weakness
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
